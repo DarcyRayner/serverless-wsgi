@@ -96,6 +96,12 @@ def handler(event, context):
         'REMOTE_USER':
             event[u'requestContext'].get(u'authorizer', {}).get(
                 u'principalId', ''),
+        'COGNITO_USER':
+            event[u'requestContext'].get(u'identity', {}).get(
+                u'cognitoIdentityId', ''),
+        'COGNITO_AUTHENTICATION_PROVIDER':
+            event[u'requestContext'].get(u'identity', {}).get(
+                u'cognitoAuthenticationProvider', ''),        
         'REQUEST_METHOD':
             event[u'httpMethod'],
         'SCRIPT_NAME':
